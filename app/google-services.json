@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1059465039676",
+    "firebase_url": "https://docufy-c2666.firebaseio.com",
+    "project_id": "docufy-c2666",
+    "storage_bucket": "docufy-c2666.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059465039676:android:2cb0462516a9ce1e",
+        "android_client_info": {
+          "package_name": "com.example.uplabdhisingh.docufy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059465039676-pb56c9ghumjgkm23jh5oq1bgg24fjihs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.uplabdhisingh.docufy",
+            "certificate_hash": "fb443a186d1f582ad4616719d5987679e5edb551"
+          }
+        },
+        {
+          "client_id": "1059465039676-5rjochi6pm5tafdmg95o4o52r9uhs850.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-QwQglF0k-yv58IjyhUc90hG8nERKiLY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1059465039676-5rjochi6pm5tafdmg95o4o52r9uhs850.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

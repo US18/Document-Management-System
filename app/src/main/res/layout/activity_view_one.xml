@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ViewOneActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/tv_name"
+           android:layout_marginTop="10dp"
+           android:layout_marginLeft="10dp"
+           android:layout_marginRight="2dp"
+           android:text="Name :   "
+           android:textSize="20sp"
+           android:textColor="#121a46"
+           />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_faculty_name"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/tv_name"
+            android:layout_toRightOf="@id/tv_name"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:hint="Enter your full name "
+            />
+
+        <TextView
+            android:id="@+id/tv_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="2dp"
+            android:layout_below="@id/tv_name"
+            android:text="Course : "
+            android:textColor="#121a46"
+            android:textSize="20sp"
+            />
+
+        <Spinner
+            android:id="@+id/spinner_course"
+            android:layout_width="256dp"
+            android:layout_height="35dp"
+            android:layout_below="@id/et_faculty_name"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/tv_semester"
+            android:layout_toRightOf="@id/tv_semester"
+            android:background="#121a46"
+            android:popupBackground="#121a46"
+            android:prompt="@string/spinner_name"
+            android:spinnerMode="dropdown" />
+
+        <TextView
+            android:id="@+id/tv_session"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_course"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="2dp"
+            android:text="Session :"
+            android:textColor="#121a46"
+            android:textSize="20sp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_session"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/spinner_course"
+            android:layout_toRightOf="@+id/tv_session"
+            android:layout_toEndOf="@id/tv_session"
+            android:hint="Enter your Session here"
+            />
+
+        <TextView
+            android:id="@+id/tv_semester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="2dp"
+            android:layout_below="@id/tv_session"
+            android:text="Semester :"
+            android:textColor="#121a46"
+            android:textSize="20sp" />
+
+      <Spinner
+          android:layout_width="250dp"
+          android:layout_height="35dp"
+          android:id="@+id/spinner_semester"
+          android:layout_toRightOf="@id/tv_semester"
+          android:layout_toEndOf="@id/tv_semester"
+          android:layout_below="@id/et_session"
+          android:layout_marginTop="5dp"
+          android:layout_marginLeft="5dp"
+          android:layout_marginRight="5dp"
+          android:prompt="@string/spinner_name"
+          android:spinnerMode="dropdown"
+          android:popupBackground="#121a46"
+          android:background="#121a46"
+          />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_file_name"
+            android:hint="Enter file name here..."
+            android:layout_below="@id/spinner_semester"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_upload_file"
+            android:text="Upload File"
+            android:layout_below="@id/et_file_name"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_view_uploads"
+            android:text="View Uploads"
+            android:layout_below="@id/btn_upload_file"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            />
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_merge_uploads"
+            android:layout_below="@id/btn_upload_file"
+            android:layout_toEndOf="@id/btn_view_uploads"
+            android:layout_toRightOf="@id/btn_view_uploads"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="125dp"
+            android:text="Merged Files"
+            android:layout_marginStart="125dp" />
+    </RelativeLayout>
+</ScrollView>
