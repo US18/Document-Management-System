@@ -8,10 +8,22 @@
     android:layout_margin="10dp"
     tools:context=".ViewTwoActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_choose_files"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:text="Choose Files"
+        android:visibility="gone"
+        />
+
     <ListView
         android:id="@+id/listView"
+        android:layout_below="@id/btn_choose_files"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:choiceMode="multipleChoice"/>
+        android:choiceMode="multipleChoice"
+        />
 
 </RelativeLayout>

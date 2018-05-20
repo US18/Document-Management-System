@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -33,6 +34,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -52,6 +57,9 @@ public class ViewOneActivity extends AppCompatActivity implements AdapterView.On
    FirebaseAuth mFirebaseAuth;
    FirebaseAuth.AuthStateListener mAuthStateListener;
    private static final int RC_SIGN_IN = 1;
+
+   private String TAG=ViewOneActivity.class.getSimpleName();
+   public static String DIRECTORY_DOWNLOADS = "/storage/sdcard0/Android/data/package/files/Download";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -119,6 +127,16 @@ public class ViewOneActivity extends AppCompatActivity implements AdapterView.On
         public void onClick(View v)
         {
             Intent intent = new Intent(ViewOneActivity.this, ViewTwoActivity.class);
+           // intent.putExtra("uriFromViewOne",downloadUrl.toString());
+            intent.putExtra("fileNameFromViewOne",fileNameInput);
+            startActivity(intent);
+        }
+    });
+
+    mergeFileButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(ViewOneActivity.this,SelectedFiles.class);
             startActivity(intent);
         }
     });
@@ -186,6 +204,7 @@ public class ViewOneActivity extends AppCompatActivity implements AdapterView.On
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
     }
+
    @Override
    protected void onActivityResult(int requestCode, int resultCode, Intent data)
    {
@@ -208,6 +227,25 @@ public class ViewOneActivity extends AppCompatActivity implements AdapterView.On
      {
       //uploading the file
       uploadFile(data.getData());
+
+      Log.d(TAG, "CHECKING THE URI :::: "+data.getData());
+  /*    Uri uriCheck = data.getData();
+      String path1 = uriCheck.getPath();
+
+         File myfile = null;
+         myfile = new File(uriCheck.getPath());
+         File file1 = getApplicationContext().getExternalFilesDir(DIRECTORY_DOWNLOADS);
+         // String path = myfile.getPath();
+
+         Log.d(TAG," PATH IS ::: "+file1);
+         try {
+             getContentResolver().openInputStream(uriCheck);
+
+             Log.d(TAG,"FILE URI :::: " +getContentResolver().openAssetFileDescriptor(uriCheck,"r"));
+         } catch (FileNotFoundException e) {
+             e.printStackTrace();
+         }*/
+
      } else
      {
        Toast.makeText(this, "No file chosen", Toast.LENGTH_SHORT).show();

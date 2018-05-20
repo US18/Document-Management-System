@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -23,7 +24,7 @@ import java.util.List;
 
 public class UploadsListAdapter extends ArrayAdapter<Uploads>
 {
-    List<Uploads> uploadsList;
+   private List<Uploads> uploadsList;
 
     public UploadsListAdapter(Context context, int resource, List<Uploads> objects)
     {
@@ -48,15 +49,14 @@ public class UploadsListAdapter extends ArrayAdapter<Uploads>
         courseTextView.setText(uploads.getCourse());
         fileNameTextView.setText(uploads.getName());
 
-     /*   if(uploads.isSelected())
-        {
-            checkIV.setBackgroundResource(R.drawable.ic_check_box_black_24dp);
-        } else
-        {
-            checkIV.setBackgroundResource(R.drawable.ic_check_box_outline_blank_black_24dp);
-        }*/
-
         return convertView;
+    }
+
+
+    @Override
+    public int getCount()
+    {
+        return uploadsList.size();
     }
 
     public void updateRecords(List<Uploads> uploadsList)

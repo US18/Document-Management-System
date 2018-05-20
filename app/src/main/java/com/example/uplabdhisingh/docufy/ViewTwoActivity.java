@@ -51,16 +51,22 @@ public class ViewTwoActivity extends AppCompatActivity
 
     ListView listView;
     List<Uploads> uploadsList;
+    Button chooseFilesButton;
+    Uploads upload;
 
     static final int PICK_FILE_REQUEST = 101;
 
     private String pathToFile = "";
 
     UploadsListAdapter listAdapter;
-
     DatabaseReference mDatabaseReference;
 
-    View row;
+   View row;
+
+   int selectedPosition;
+   String TAG = ViewTwoActivity.class.getSimpleName();
+    String selectedItemUri;
+    String selectedItemName;
 
     private ChildEventListener mChildEventListener;
 
@@ -74,35 +80,77 @@ public class ViewTwoActivity extends AppCompatActivity
         mDatabaseReference = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
 
         listView = (ListView) findViewById(R.id.listView);
+
+
         listAdapter = new UploadsListAdapter
                 (this,R.layout.uploads_list_tem,uploadsList);
-
 
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView.setItemsCanFocus(false);
         listView.setAdapter(listAdapter);
 
+        chooseFilesButton = (Button) findViewById(R.id.btn_choose_files);
+
+       /* String[] arrayListviewItems = new String[listView.getAdapter().getCount()];
+
+       *//* int value1 = listAdapter.getValue();
+
+        Log.d(TAG,"SIZE IS : " +value1);*//*
+
+
+
+        for(int i=0; i<20;i++)
+        {
+            Intent intent = getIntent();
+            //String uri = upload.getUrl();
+          //  Uri uri = Uri.parse(upload.getUrl());
+            String name = intent.getStringExtra("fileNameFromViewOne");
+
+           // arrayListviewItems[i]=uri;
+//            arrayListviewItems[i]=name;
+        }*/
+
+       // Log.d(TAG,"ARRAY IS : "+arrayListviewItems[0]);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
             {
+                selectedPosition=position;
                 //getting the upload
-                Uploads upload = uploadsList.get(i);
+                upload = uploadsList.get(selectedPosition);
 
+                chooseFilesButton.setVisibility(View.VISIBLE);
                 listAdapter.updateRecords(uploadsList);
-
                 //Opening the upload file in browser using the upload url
                /* Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(upload.getUrl()));
                 startActivity(intent);*/
-
+                row=view;
                if(row!=null)
                {
                    row.setBackgroundResource(R.color.green);
                }
-               row=view;
-               view.setBackgroundResource(R.color.white);
+               view.setBackgroundResource(R.color.green);
+
+                Log.d(TAG,"URI IS :::::" +Uri.parse(upload.getUrl()));
+
+           //   selectedItemUri = arrayListviewItems[position];
+            //  selectedItemName = arrayListviewItems[position];
+            }
+        });
+
+
+
+        chooseFilesButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                Intent intentToMergeActivity = new Intent(ViewTwoActivity.this,SelectedFiles.class);
+                intentToMergeActivity.putExtra("URI",selectedItemUri);
+               intentToMergeActivity.putExtra("NAME",selectedItemName);
+                startActivity(intentToMergeActivity);
             }
         });
 
@@ -136,30 +184,6 @@ public class ViewTwoActivity extends AppCompatActivity
             }
         };
         mDatabaseReference.addChildEventListener(mChildEventListener);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        int itemId = item.getItemId();
-        if(itemId == R.id.zip)
-        {
-            if(listAdapter != null)
-            {
-                Toast.makeText(this, "Selected Items : " +uploadsList.get(0).fileName, Toast.LENGTH_SHORT).show();
-            }
-            return true;
-        } else {
-            return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.view_two_menu,menu);
-        return true;
     }
 }
 

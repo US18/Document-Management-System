@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/outputList"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
     tools:context=".SelectedFiles">
 
-</ListView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/et_zip_file_name"
+        android:hint="Enter Your ZIP file name here..."
+        />
+
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Create Zip"
+       android:layout_margin="10dp"
+       android:id="@+id/btn_zip"
+       />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Include Parent Folder in zip file"
+        android:id="@+id/chkParent"
+        android:layout_margin="10dp"
+        android:checked="false" />
+
+</LinearLayout>
